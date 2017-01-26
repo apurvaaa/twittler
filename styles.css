@@ -5,7 +5,7 @@ body {
 #tweetsDisplay {
 
 	background: rgb(220, 170, 30);
-	border: rgb(241, 212, 220) solid;
+	border:  rgb(241, 212, 220) solid;
 	display: inline-block;
 	height: 70%;
 	width: 60%;
@@ -17,7 +17,7 @@ body {
 
 button {
 
- font-size: 12px;
+ font-size: 16px;
  text-align: center;
  background-color: rgb(231, 74, 43);
  border: rgb(220, 170, 30) solid;
@@ -25,9 +25,41 @@ button {
  box-shadow: 2px 2px rgb(49, 103, 166);
  color: rgb(249, 242, 247);
  width: 60%;
+ height: 40px;
  margin: 20px 0;
 }
 
 .wrapper {
 	text-align: center;
+}
+
+.tweet_elements {
+	display: inline-flex;
+	margin: 20px 0;
+	width: 100%;
+	border: rgb(249, 242, 247) solid;
+	border-radius: 10px;
+}
+
+.userName {
+	color: rgb(231, 74, 43);
+	display: inline-block;
+	padding: 10px;
+	width: 20%;
+	background-color: rgb(220, 170, 30);
+	margin: auto;
+}
+
+.tweets {
+	display: inline-block;
+	width: 50%;
+	margin: auto;
+	padding: 0 0 0 30px;
+}
+
+.timestamp {
+	display: inline-block;
+	width: 20%;
+	color: rgb(241, 212, 220);
+	margin: auto;
 }
