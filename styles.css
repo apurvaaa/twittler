@@ -1,11 +1,33 @@
+body {
+	background: rgb(94, 176, 157);
+}
+
+#tweetsDisplay {
+
+	background: rgb(220, 170, 30);
+	border: rgb(241, 212, 220) solid;
+	display: inline-block;
+	height: 70%;
+	width: 60%;
+	padding: 40px 40px;
+	overflow-y: hidden;
+	text-align: left;
+
+}
+
 button {
 
- margin: auto 0;
+ font-size: 12px;
  text-align: center;
- border: rgb(83, 155, 201) solid;
- background-color: rgb(83, 155, 201);
+ background-color: rgb(231, 74, 43);
+ border: rgb(220, 170, 30) solid;
  border-radius: 10px;
  box-shadow: 2px 2px rgb(49, 103, 166);
- color: white;
+ color: rgb(249, 242, 247);
+ width: 60%;
+ margin: 20px 0;
+}
 
+.wrapper {
+	text-align: center;
 }
