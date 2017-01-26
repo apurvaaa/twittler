@@ -1,25 +1,45 @@
 <!DOCTYPE html>
+<!-- 
+users : array of strings
+streams: {users: { property for each user you follow}, home: {user: message: }array of objects of all tweets from all users you are following }
+
+The generated tweets will be displayed in reverse chronological order.
+-->
+
 <html>
   <head>
-    <script src="jquery.js"></script>
-    <script src="data_generator.js"></script>
+    <link rel = 'stylesheet' href = 'styles.css'/>
   </head>
   <body>
+    <button>New Tweets</button>
+    <div class = 'tweetsDisplay'></div>
+
+    <script src="jquery.js"></script>
+    <script src="data_generator.js"></script>
     <script>
 
       $(document).ready(function(){
-        var $body = $('body');
-        $body.html('');
+        var $tweetsDisplay = $('.tweetsDisplay');
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
+        var newTweets = function() {
+         var index = streams.home.length - 1;
+          while(index >= 0){
+            var tweet = streams.home[index];
+            var $tweet = $('<div></div>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message);
+            $tweet.appendTo($tweetsDisplay);
+            index -= 1;
+          }
         }
 
+        var refresher = function() {
+          $tweetsDisplay.html('');
+          newTweets();
+        }
+
+        refresher();
+
+        $('button').on('click', refresher);
       });
 
     </script>
