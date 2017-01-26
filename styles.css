@@ -9,7 +9,7 @@ body {
 	display: inline-block;
 	height: 70%;
 	width: 60%;
-	padding: 40px 40px;
+	padding: 25px 40px;
 	overflow-y: hidden;
 	text-align: left;
 
@@ -24,7 +24,7 @@ button {
  border-radius: 10px;
  box-shadow: 2px 2px rgb(49, 103, 166);
  color: rgb(249, 242, 247);
- width: 60%;
+ width: 50%;
  height: 40px;
  margin: 20px 0;
 }
@@ -52,7 +52,7 @@ button {
 
 .tweets {
 	display: inline-block;
-	width: 50%;
+	width: 60%;
 	margin: auto;
 	padding: 0 0 0 30px;
 }
