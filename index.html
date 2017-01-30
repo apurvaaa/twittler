@@ -21,18 +21,15 @@ The generated tweets will be displayed in reverse chronological order.
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
     <script>
-
+      var $tweetsDisplay = $('#tweetsDisplay');
       var getTimeStamp = function(tweet) {
           var tweeDate = (tweet.created_at); 
           return  'on ' + (tweeDate.getMonth() + 1 )+ '/' + tweeDate.getDate() + ' at ' + tweeDate.getHours() + ':' + tweeDate.getMinutes() + ':' + tweeDate.getSeconds();
-        }
-
-      $(document).ready(function(){
-        var $tweetsDisplay = $('#tweetsDisplay');
-        var newTweets = function() {
-         var index = streams.home.length - 1;
+      }
+      var populate = function(tweetObjectList) {
+        var index = tweetObjectList.length - 1;
           while(index >= 0){
-            var tweet = streams.home[index];
+            var tweet = tweetObjectList[index];
             var $tweet = $('<div class = \'tweet_elements group\'></div>');
             var $user = $('<a class = \'userName\' href = \'#\'></a>');
             var $message = $('<div class = \'tweets\'></div>');
@@ -48,44 +45,28 @@ The generated tweets will be displayed in reverse chronological order.
             $date.appendTo($tweet);
             index -= 1;
           }
-        }
+      }
+      var newTweets = function() {
+          populate(streams.home);
+      }
       var refresher = function() {
-        $tweetsDisplay.html('');
-        newTweets();
+          $tweetsDisplay.html('');
+          newTweets();
+      }
+      var linkClicker = function() {
+          $tweetsDisplay.html('');
+
+          var userName = $(this).text().slice(1);
+          populate(streams.users[userName]);
+          
       }
 
-      refresher();
 
-      $('button').on('click', refresher);
-      $('a').on('click', function(event) {
-        event.preventDefault();
-        $('body').empty();
-        var $tweetsDisplay = $('<div id = \'#tweetsDisplay\'> </div>');
-        $tweetsDisplay.appendTo('body');
-
-        var userName = $(this).text().slice(1);
-        var index = (streams.users[userName]).length - 1;
-        var userTweets = streams.users[userName];
-        while (index >= 0) {
-          var tweet = userTweets[index];
-          var $tweet = $('<div class = \'tweet_elements group\'></div>');
-          var $user = $('<a class = \'userName\' href = \'#\'></a>');
-          var $message = $('<div class = \'tweets\'></div>');
-          var $date = $('<div class = \'timestamp\'></div>');
-
-          $user.text('@' + tweet.user);
-          $message.text(tweet.message);
-          $date.text(getTimeStamp(tweet));
-
-          $tweet.appendTo($tweetsDisplay);
-          $user.appendTo($tweet);
-          $message.appendTo($tweet);
-          $date.appendTo($tweet);
-          index--;
-        }
+      $(document).ready(function(){
+        refresher();
+        $('button').on('click', refresher);
+        $('.wrapper').on('click','a', linkClicker);
       });
-    });
-
     </script>
   </body>
 </html>
